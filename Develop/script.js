@@ -15,6 +15,27 @@ document.addEventListener('DOMContentLoaded',function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
+  $(".saveBtn" ).click(function() {
+    alert( "Handler for .click() called." );
+
+    // the following sets the variable for description. 
+    // 'this' points to the 'siblings' elements (siblings becasue there
+    // are more than one html element within the time block) and .description
+    // in the parenthesis because it's an ID and description is what we're targeting
+    // we use .val because we're grabbing text.
+    var description = $(this).siblings('.description').val()
+
+    // the following sets the variable for the hour.
+    // 'this' points the parent element (there's only one parent element so its not plural)
+    // and .attr because we're targeting the id and because its a parent attribute 
+    // 'id' is inserted in the parenthesis because that's what we want specifically
+    var hour = $(this).parent().attr('id')
+    // this saves data to local storage. hour referes to the key and description refers to the value
+    // we're targeting within the key.
+    localStorage.setItem(hour, description);
+    console.log(hour)
+  });
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. 
   // HINTS: How can the id attribute of each time-block be used to conditionally add or remove the
